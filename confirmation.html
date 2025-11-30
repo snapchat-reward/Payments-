@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title id="pageTitleConfirm">تم إرسال الطلب بنجاح</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Almarai:wght@400;700&family=Lato:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        /* تنسيقات خاصة بصفحة التأكيد */
+        .confirmation-section {
+            min-height: 80vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            background-color: #f0f2f5;
+            padding: 40px 20px;
+        }
+        .confirmation-box {
+            background-color: #fff;
+            padding: 60px;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+        .confirmation-icon {
+            color: #FFFC00;
+            font-size: 5rem;
+            margin-bottom: 20px;
+            line-height: 1; 
+        }
+        .confirmation-box h1 {
+            font-size: 2.8rem;
+            color: #1a1a1a;
+            margin-bottom: 15px;
+        }
+        .confirmation-box p {
+            font-size: 1.2rem;
+            color: #555;
+            margin-bottom: 30px;
+        }
+        .home-btn {
+            background-color: #1a1a1a;
+            color: #FFFC00;
+            padding: 12px 30px;
+            font-size: 1.1rem;
+            font-weight: bold;
+            border-radius: 50px;
+            text-decoration: none; 
+            transition: background-color 0.3s;
+        }
+        .home-btn:hover { background-color: #000; }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <img src="https://www.svgrepo.com/show/303498/snapchat-logo.svg" alt="Snapchat Logo" class="logo">
+        </div>
+    </header>
+
+    <section class="confirmation-section">
+        <div class="confirmation-box">
+            <div class="confirmation-icon">✔</div>
+            <h1 id="confirmHeader">تم استلام طلبك!</h1>
+            <p id="confirmText">شكرًا لك على اهتمامك بمنصة الأضواء. سنقوم بمراجعة طلبك والتواصل معك قريبًا.</p>
+            <a href="index.html" class="home-btn" id="homeBtn">العودة للصفحة الرئيسية</a>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <p id="footerTextConfirm">© 2025 جميع الحقوق محفوظة لـ Snapchat</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
