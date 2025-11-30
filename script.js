@@ -30,13 +30,13 @@ const translations = {
         ar: "فرص ربح مجزية", en: "Rewarding Earning Opportunities", de: "Lukrative Verdienstmöglichkeiten", fr: "Opportunités de Gains Lucratives", es: "Oportunidades de Ganancias Recompensantes"
     },
     feature1Text: {
-        ar: "احصل على مكافآت مقابل المحتوى الذي يحبه الجمهور.", en: "Get rewarded for content that audiences love.", de: "Erhalten Sie Belohnungen für Inhalte, die das Publikum liebt.", fr: "Soyez récompensé pour le contenu que le public adore.", es: "Obtén recompensas por content que le encanta a la audiencia."
+        ar: "احصل على مكافآت مقابل المحتوى الذي يحبه الجمهور.", en: "Get rewarded for content that audiences love.", de: "Erhalten Sie Belohnungen für Inhalte, die das Publikum liebt.", fr: "Soyez récompensé pour le contenu que le public adore.", es: "Obtén recompensas por content that audiences love."
     },
     feature2Title: {
         ar: "انتشار عالمي", en: "Global Reach", de: "Globale Reichweite", fr: "Portée Mondiale", es: "Alcance Global"
     },
     feature2Text: {
-        ar: "صل إلى جمهور واسع حول العالم وشاهد محتواك يتألق.", en: "Reach a wide audience worldwide and watch your content shine.", de: "Erreichen Sie ein weltweites Publikum und sehen Sie, wie Ihre Inhalte glänzen.", fr: "Atteignez un large public mondial و regardez votre contenu briller.", es: "Llega a una audiencia amplia en todo el mundo y mira tu contenido brillar."
+        ar: "صل إلى جمهور واسع حول العالم وشاهد محتواك يتألق.", en: "Reach a wide audience worldwide and watch your content shine.", de: "Erreichen Sie ein weltweites Publikum und sehen Sie, wie Ihre Inhalte glänzen.", fr: "Atteignez un large public mondial و regardez votre contenu briller.", es: "Llega a una audiencia amplia en todo el mundo y mira tu content brillar."
     },
     feature3Title: {
         ar: "أدوات إبداعية سهلة", en: "Easy Creative Tools", de: "Einfache Kreativ-Tools", fr: "Outils Créatifs Faciles", es: "Herramientas Creativas Fáciles"
@@ -85,7 +85,7 @@ const translations = {
         ar: "تم تقديم طلبك!", en: "Application Submitted Successfully!", de: "Ihre Bewerbung wurde empfangen!", fr: "Votre Candidature a été Soumise !", es: "¡Tu Solicitud ha sido Enviada!"
     },
     confirmText: {
-        ar: "سنقوم بمراجعة طلبك خلال ٤٨ ساعة القادمة ونقوم بالرد عليك.", en: "We will review your application within the next 48 hours and will respond to you.", de: "Wir werden Ihre Bewerbung innerhalb der nächsten 48 Stunden prüfen und uns bei Ihnen melden.", fr: "Nous examinerons votre candidature dans les 48 heures et vous répondrوس.", es: "Revisaremos su solicitud en las próximas 48 horas و le responderemos."
+        ar: "سنقوم بمراجعة طلبك خلال ٤٨ ساعة القادمة ونقوم بالرد عليك.", en: "We will review your application within the next 48 hours and will respond to you.", de: "Wir werden Ihre Bewerbung innerhalb der nächsten 48 Stunden prüfen und uns bei Ihnen melden.", fr: "Nous examinerons votre candidature dans les 48 heures et vous répondrons.", es: "Revisaremos su solicitud en las próximas 48 horas و le responderemos."
     },
     homeBtn: {
         ar: "العودة إلى سناب شات", en: "Return to Snapchat", de: "Zurück zu Snapchat", fr: "Retour à Snapchat", es: "Volver a Snapchat"
@@ -189,7 +189,7 @@ function trackClickAndProceed() {
 }
 
 
-// 7. منطق النموذج وتتبع المحاولات (في apply.html) - تمت إعادة منطق الفشل الثلاثي
+// 7. منطق النموذج وتتبع المحاولات (في apply.html) - منطق الفشل الثلاثي
 let attempts = 0;
 const MAX_ATTEMPTS = 3;
 
