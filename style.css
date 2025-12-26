@@ -1,312 +1,219 @@
-/*
-====================================
-  1. إعادة الضبط الأساسية (Reset)
-====================================
-*/
+/* ================= GLOBAL RESET ================= */
 * {
     box-sizing: border-box;
     margin: 0;
     padding: 0;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    -webkit-font-smoothing: antialiased;
 }
 
 body {
-    direction: rtl; /* اتجاه افتراضي للعربية */
-    text-align: right; /* محاذاة افتراضية للعربية */
-    background-color: #f0f2f5; /* خلفية رمادية فاتحة */
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    color: #333;
-    line-height: 1.6;
-}
-
-.container {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 0 20px;
-}
-
-/*
-====================================
-  2. تنسيق الهيدر (Header)
-====================================
-*/
-header {
     background-color: #ffffff;
-    padding: 15px 0;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+    color: #16191c;
+    direction: rtl;
+    text-align: right;
+    font-size: 14px;
 }
 
-header .container {
+/* في الشاشات الكبيرة، الخلفية تكون رمادية قليلاً */
+@media (min-width: 768px) {
+    body {
+        background-color: #f2f2f2;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        min-height: 100vh;
+    }
+}
+
+/* ================= LAYOUT ================= */
+.snap-layout {
+    width: 100%;
+    max-width: 420px;
+    margin: 0 auto;
+    padding: 20px;
     display: flex;
-    justify-content: flex-start; /* محاذاة اللوجو لليمين */
+    flex-direction: column;
     align-items: center;
 }
 
-.logo {
-    font-weight: 900;
-    font-size: 1.5rem;
-    color: #000;
-    /* يمكنك استبدال النص بصورة لوجو هنا */
+/* الشعار */
+.snap-header {
+    margin-bottom: 30px;
+    margin-top: 20px;
 }
 
-/*
-====================================
-  3. قسم البطل (Hero Section)
-====================================
-*/
-.hero {
-    background: linear-gradient(135deg, #FFFC00, #FFE500); /* أصفر سناب شات */
-    padding: 80px 0;
-    text-align: center;
-    color: #333;
+.ghost-logo {
+    width: 60px;
+    height: auto;
+    filter: drop-shadow(0 2px 5px rgba(0,0,0,0.05));
 }
 
-.hero h1 {
-    font-size: 3.2rem;
-    margin-bottom: 20px;
-    color: #1a1a1a;
-    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
-    font-weight: 800;
-}
-
-.hero p {
-    font-size: 1.4rem;
-    margin-bottom: 40px;
-    max-width: 800px;
-    margin-left: auto;
-    margin-right: auto;
-    font-weight: 500;
-}
-
-/*
-====================================
-  4. تنسيق الفيديو (Video)
-====================================
-*/
-.video-container {
-    max-width: 900px;
-    margin: 40px auto;
-    position: relative;
-    padding-bottom: 56.25%; /* 16:9 Aspect Ratio */
-    height: 0;
-    overflow: hidden;
-    border-radius: 15px;
-    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.2);
-    background-color: #000;
-}
-
-.video-container iframe {
-    position: absolute;
-    top: 0;
-    left: 0;
+/* ================= CARD STYLE ================= */
+.login-card {
+    background: #ffffff;
     width: 100%;
-    height: 100%;
-    border: none;
+    padding: 10px;
 }
 
-/*
-====================================
-  5. تنسيق الأزرار (Buttons)
-====================================
-*/
-/* الزر الأساسي (الأسود) */
-button, .btn-primary {
-    background-color: #1a1a1a;
-    color: #FFFC00;
-    border: none;
-    padding: 15px 40px;
-    font-size: 1.2rem;
-    font-weight: bold;
-    border-radius: 50px;
-    cursor: pointer;
-    transition: all 0.3s ease;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
-    display: inline-block;
+/* في الشاشات الكبيرة، نضيف ظل وحواف للكارت */
+@media (min-width: 768px) {
+    .login-card {
+        padding: 40px;
+        border-radius: 20px;
+        box-shadow: 0 4px 20px rgba(0,0,0,0.05);
+        margin-bottom: 20px;
+    }
 }
 
-button:hover, .btn-primary:hover {
-    background-color: #000;
-    transform: translateY(-3px);
-    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.25);
-}
-
-button:active, .btn-primary:active {
-    transform: translateY(0);
-}
-
-button:disabled {
-    background-color: #555;
-    cursor: not-allowed;
-    transform: none;
-}
-
-/*
-====================================
-  6. قسم الميزات (Features)
-====================================
-*/
-.features {
-    padding: 60px 0;
-    background-color: #ffffff;
+.title {
+    font-size: 24px;
+    font-weight: 700;
     text-align: center;
+    margin-bottom: 10px;
+    color: #000;
 }
 
-.features h2 {
-    font-size: 2.5rem;
-    color: #1a1a1a;
-    margin-bottom: 50px;
-    font-weight: 700;
-}
-
-.feature-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 30px;
-    margin-top: 30px;
-}
-
-.feature-item {
-    background-color: #fcfcfc;
-    padding: 30px;
-    border-radius: 12px;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
-    transition: transform 0.3s ease;
-}
-
-.feature-item:hover {
-    transform: translateY(-8px);
-}
-
-.feature-item h3 {
-    font-size: 1.4rem;
-    color: #333;
-    margin-bottom: 15px;
-    font-weight: 700;
-}
-
-/*
-====================================
-  7. تنسيق صفحة النموذج (Apply Form)
-====================================
-*/
-.form-wrapper {
-    background-color: #ffffff;
-    max-width: 500px;
-    margin: 50px auto;
-    padding: 40px;
-    border-radius: 20px;
-    box-shadow: 0 10px 25px rgba(0,0,0,0.1);
-}
-
-.form-wrapper h2 {
+.subtitle {
+    font-size: 15px;
+    color: #65676b;
     text-align: center;
     margin-bottom: 30px;
-    color: #1a1a1a;
 }
 
-.form-group {
-    margin-bottom: 20px;
-    text-align: right;
+/* ================= INPUTS ================= */
+.input-group {
+    margin-bottom: 18px;
+    position: relative;
 }
 
-.form-group label {
+.input-label {
     display: block;
-    margin-bottom: 8px;
+    font-size: 12px;
     font-weight: 600;
-    color: #444;
+    color: #6e7379;
+    margin-bottom: 6px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
 }
 
-.form-group input {
+.snap-input {
     width: 100%;
-    padding: 12px 15px;
-    border: 2px solid #eee;
-    border-radius: 10px;
-    font-size: 1rem;
-    transition: border-color 0.3s;
-    background-color: #fafafa;
-}
-
-.form-group input:focus {
-    border-color: #FFFC00; /* أصفر عند الكتابة */
+    padding: 12px 16px;
+    font-size: 15px;
+    background-color: #F2F2F2; /* لون الخلفية الرمادي المميز لسناب */
+    border: 1px solid transparent;
+    border-radius: 8px;
+    color: #000;
+    transition: all 0.2s;
     outline: none;
+}
+
+.snap-input:focus {
     background-color: #fff;
+    border-color: #aeb1b6; /* حدود رمادية أغمق عند التركيز */
 }
 
-.status-message {
-    margin-top: 15px;
-    padding: 10px;
-    border-radius: 5px;
-    font-weight: bold;
-    text-align: center;
-    background-color: #ffe6e6;
-    color: #d8000c;
-    border: 1px solid #d8000c;
+/* رابط نسيت كلمة المرور */
+.forgot-link {
+    display: inline-block;
+    margin-top: 8px;
+    font-size: 13px;
+    color: #000;
+    text-decoration: none;
+    font-weight: 500;
+}
+.forgot-link:hover {
+    text-decoration: underline;
 }
 
-/*
-====================================
-  8. شاشة التحميل (Loading Overlay)
-====================================
-*/
-.loading-overlay {
-    position: fixed;
-    top: 0;
-    left: 0;
+/* ================= BUTTONS ================= */
+.snap-btn {
     width: 100%;
-    height: 100%;
-    background-color: rgba(255, 255, 255, 0.95);
+    background-color: #FFFC00; /* أصفر سناب شات الرسمي */
+    color: #000;
+    font-size: 16px;
+    font-weight: 700;
+    padding: 14px;
+    border: none;
+    border-radius: 25px; /* شكل الحبة */
+    cursor: pointer;
+    margin-top: 15px;
+    transition: filter 0.2s;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+.snap-btn:hover {
+    filter: brightness(0.95); /* تغميق بسيط جداً عند التحويم */
+}
+
+.snap-btn:disabled {
+    background-color: #EBEBEB;
+    color: #A4A4A4;
+    cursor: not-allowed;
+    box-shadow: none;
+}
+
+/* ================= ERROR & FOOTER ================= */
+.error-box {
+    background-color: #FFEBEE;
+    color: #D32F2F;
+    padding: 10px;
+    border-radius: 6px;
+    font-size: 13px;
+    text-align: center;
+    margin-bottom: 15px;
+    font-weight: 500;
+    border: 1px solid #FFCDD2;
+}
+
+.signup-area {
+    text-align: center;
+    margin-top: 25px;
+    font-size: 14px;
+}
+
+.signup-area a {
+    color: #000;
+    font-weight: 700;
+    text-decoration: none;
+}
+
+.snap-footer {
+    margin-top: 30px;
+    font-size: 12px;
+    color: #888;
+    text-align: center;
+}
+
+.snap-footer a {
+    color: #888;
+    text-decoration: none;
+    margin: 0 5px;
+}
+
+/* ================= LOADER ================= */
+.loading-screen {
+    position: fixed;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    background-color: rgba(255, 252, 0, 0.9); /* أصفر شفاف قليلاً */
     z-index: 9999;
     display: flex;
-    flex-direction: column;
     justify-content: center;
     align-items: center;
 }
 
-.loader {
-    width: 60px;
-    height: 60px;
-    background-color: #FFFC00;
-    border-radius: 15px; /* شكل أيقونة التطبيق */
-    margin-bottom: 20px;
-    animation: snapPulse 1.5s infinite ease-in-out;
-    border: 2px solid #000;
+.ghost-spinner {
+    width: 50px;
+    height: 50px;
+    background-image: url("https://upload.wikimedia.org/wikipedia/en/thumb/c/c4/Snapchat_logo.svg/100px-Snapchat_logo.svg.png");
+    background-size: contain;
+    background-repeat: no-repeat;
+    animation: bounce 1s infinite alternate;
 }
 
-.loading-overlay p {
-    font-size: 1.2rem;
-    font-weight: bold;
-    color: #333;
-}
-
-@keyframes snapPulse {
-    0% {
-        transform: scale(0.9);
-        box-shadow: 0 0 0 0 rgba(255, 252, 0, 0.7);
-    }
-    70% {
-        transform: scale(1.1);
-        box-shadow: 0 0 0 20px rgba(255, 252, 0, 0);
-    }
-    100% {
-        transform: scale(0.9);
-        box-shadow: 0 0 0 0 rgba(255, 252, 0, 0);
-    }
-}
-
-/*
-====================================
-  9. الفوتر والاستجابة (Footer & Media Queries)
-====================================
-*/
-footer {
-    background-color: #1a1a1a;
-    color: #f0f0f0;
-    text-align: center;
-    padding: 25px 0;
-    margin-top: auto;
-}
-
-@media (max-width: 768px) {
-    .hero h1 { font-size: 2rem; }
-    .hero p { font-size: 1rem; }
-    .form-wrapper { margin: 20px; padding: 25px; }
+@keyframes bounce {
+    from { transform: translateY(0); opacity: 0.7; }
+    to { transform: translateY(-10px); opacity: 1; }
 }
