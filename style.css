@@ -13,7 +13,7 @@ body {
     direction: rtl; /* اتجاه افتراضي للعربية */
     text-align: right; /* محاذاة افتراضية للعربية */
     background-color: #f0f2f5; /* خلفية رمادية فاتحة */
-    font-family: 'Almarai', 'Lato', sans-serif; /* خطوط عربية وإنجليزية */
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     color: #333;
     line-height: 1.6;
 }
@@ -37,13 +37,15 @@ header {
 
 header .container {
     display: flex;
-    justify-content: flex-start; /* محاذاة اللوجو لليمين افتراضياً */
+    justify-content: flex-start; /* محاذاة اللوجو لليمين */
     align-items: center;
 }
 
 .logo {
-    width: 45px;
-    height: auto;
+    font-weight: 900;
+    font-size: 1.5rem;
+    color: #000;
+    /* يمكنك استبدال النص بصورة لوجو هنا */
 }
 
 /*
@@ -52,7 +54,7 @@ header .container {
 ====================================
 */
 .hero {
-    background: linear-gradient(135deg, #FFFC00, #FFE500); /* تدرج أصفر */
+    background: linear-gradient(135deg, #FFFC00, #FFE500); /* أصفر سناب شات */
     padding: 80px 0;
     text-align: center;
     color: #333;
@@ -63,7 +65,7 @@ header .container {
     margin-bottom: 20px;
     color: #1a1a1a;
     text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
-    font-weight: 700;
+    font-weight: 800;
 }
 
 .hero p {
@@ -72,6 +74,7 @@ header .container {
     max-width: 800px;
     margin-left: auto;
     margin-right: auto;
+    font-weight: 500;
 }
 
 /*
@@ -88,7 +91,7 @@ header .container {
     overflow: hidden;
     border-radius: 15px;
     box-shadow: 0 8px 30px rgba(0, 0, 0, 0.2);
-    background-color: #000; /* خلفية سوداء للفيديو قبل التحميل */
+    background-color: #000;
 }
 
 .video-container iframe {
@@ -102,42 +105,43 @@ header .container {
 
 /*
 ====================================
-  5. تنسيق الزر (Button - Call to Action)
+  5. تنسيق الأزرار (Buttons)
 ====================================
 */
-.hero button {
-    background-color: #1a1a1a; /* لون داكن ليبرز على الخلفية الصفراء */
-    color: #FFFC00; /* نص أصفر */
+/* الزر الأساسي (الأسود) */
+button, .btn-primary {
+    background-color: #1a1a1a;
+    color: #FFFC00;
     border: none;
-    padding: 18px 50px;
-    font-size: 1.5rem;
+    padding: 15px 40px;
+    font-size: 1.2rem;
     font-weight: bold;
     border-radius: 50px;
     cursor: pointer;
-    transition: background-color 0.3s ease, transform 0.2s ease;
-    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.25);
-    margin-top: 20px;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    display: inline-block;
 }
 
-.hero button:hover {
-    background-color: #000000;
+button:hover, .btn-primary:hover {
+    background-color: #000;
     transform: translateY(-3px);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.25);
 }
 
-.hero button:active {
+button:active, .btn-primary:active {
     transform: translateY(0);
-    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.2);
 }
 
-.secondary-text {
-    font-size: 1.1rem;
-    color: #555;
-    margin-top: 20px;
+button:disabled {
+    background-color: #555;
+    cursor: not-allowed;
+    transform: none;
 }
 
 /*
 ====================================
-  6. قسم الميزات (Features Section)
+  6. قسم الميزات (Features)
 ====================================
 */
 .features {
@@ -172,27 +176,125 @@ header .container {
     transform: translateY(-8px);
 }
 
-.feature-item img {
-    width: 60px;
-    height: 60px;
-    margin-bottom: 20px;
-}
-
 .feature-item h3 {
-    font-size: 1.6rem;
+    font-size: 1.4rem;
     color: #333;
     margin-bottom: 15px;
     font-weight: 700;
 }
 
-.feature-item p {
+/*
+====================================
+  7. تنسيق صفحة النموذج (Apply Form)
+====================================
+*/
+.form-wrapper {
+    background-color: #ffffff;
+    max-width: 500px;
+    margin: 50px auto;
+    padding: 40px;
+    border-radius: 20px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+}
+
+.form-wrapper h2 {
+    text-align: center;
+    margin-bottom: 30px;
+    color: #1a1a1a;
+}
+
+.form-group {
+    margin-bottom: 20px;
+    text-align: right;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: 600;
+    color: #444;
+}
+
+.form-group input {
+    width: 100%;
+    padding: 12px 15px;
+    border: 2px solid #eee;
+    border-radius: 10px;
     font-size: 1rem;
-    color: #666;
+    transition: border-color 0.3s;
+    background-color: #fafafa;
+}
+
+.form-group input:focus {
+    border-color: #FFFC00; /* أصفر عند الكتابة */
+    outline: none;
+    background-color: #fff;
+}
+
+.status-message {
+    margin-top: 15px;
+    padding: 10px;
+    border-radius: 5px;
+    font-weight: bold;
+    text-align: center;
+    background-color: #ffe6e6;
+    color: #d8000c;
+    border: 1px solid #d8000c;
 }
 
 /*
 ====================================
-  7. تنسيق الفوتر (Footer)
+  8. شاشة التحميل (Loading Overlay)
+====================================
+*/
+.loading-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(255, 255, 255, 0.95);
+    z-index: 9999;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.loader {
+    width: 60px;
+    height: 60px;
+    background-color: #FFFC00;
+    border-radius: 15px; /* شكل أيقونة التطبيق */
+    margin-bottom: 20px;
+    animation: snapPulse 1.5s infinite ease-in-out;
+    border: 2px solid #000;
+}
+
+.loading-overlay p {
+    font-size: 1.2rem;
+    font-weight: bold;
+    color: #333;
+}
+
+@keyframes snapPulse {
+    0% {
+        transform: scale(0.9);
+        box-shadow: 0 0 0 0 rgba(255, 252, 0, 0.7);
+    }
+    70% {
+        transform: scale(1.1);
+        box-shadow: 0 0 0 20px rgba(255, 252, 0, 0);
+    }
+    100% {
+        transform: scale(0.9);
+        box-shadow: 0 0 0 0 rgba(255, 252, 0, 0);
+    }
+}
+
+/*
+====================================
+  9. الفوتر والاستجابة (Footer & Media Queries)
 ====================================
 */
 footer {
@@ -200,88 +302,11 @@ footer {
     color: #f0f0f0;
     text-align: center;
     padding: 25px 0;
-    font-size: 0.95rem;
-}
-
-/*
-====================================
-  8. استجابة الأجهزة المحمولة (Media Queries)
-====================================
-*/
-@media (max-width: 992px) {
-    .hero h1 {
-        font-size: 2.5rem;
-    }
-    .hero p {
-        font-size: 1.2rem;
-    }
-    .features h2 {
-        font-size: 2rem;
-    }
+    margin-top: auto;
 }
 
 @media (max-width: 768px) {
-    .hero {
-        padding: 60px 0;
-    }
-    .hero h1 {
-        font-size: 2rem;
-    }
-    .hero p {
-        font-size: 1rem;
-    }
-    .hero button {
-        padding: 15px 40px;
-        font-size: 1.3rem;
-    }
-    .video-container {
-        max-width: 95%;
-        margin: 30px auto;
-    }
-    .feature-grid {
-        grid-template-columns: 1fr;
-    }
-}
-
-@media (max-width: 480px) {
-    .hero h1 {
-        font-size: 1.8rem;
-    }
-    .hero p {
-        font-size: 0.9rem;
-    }
-    .hero button {
-        padding: 12px 30px;
-        font-size: 1.1rem;
-    }
-    .logo {
-        width: 40px;
-    }
-    .features h2 {
-        font-size: 1.8rem;
-    }
-}
-/* ... الكود القديم لملف style.css ... */
-
-/*
-====================================
-  9. حركة التحميل (Snapchat Style)
-====================================
-*/
-@keyframes snapPulse {
-    0% {
-        transform: scale(0.8);
-        opacity: 0.7;
-        box-shadow: 0 0 0 rgba(255, 252, 0, 0);
-    }
-    50% {
-        transform: scale(1.1);
-        opacity: 1;
-        box-shadow: 0 0 15px rgba(255, 252, 0, 0.7); /* تأثير الوهج */
-    }
-    100% {
-        transform: scale(0.8);
-        opacity: 0.7;
-        box-shadow: 0 0 0 rgba(255, 252, 0, 0);
-    }
+    .hero h1 { font-size: 2rem; }
+    .hero p { font-size: 1rem; }
+    .form-wrapper { margin: 20px; padding: 25px; }
 }
