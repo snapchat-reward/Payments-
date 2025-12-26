@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>تقديم طلب الانضمام</title>
+    <title>منصة الأضواء | تقديم الطلب</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -17,6 +17,7 @@
     <main class="container">
         <div class="form-wrapper">
             <h2>نموذج تقديم الطلب</h2>
+            <p style="text-align: center; color: #666; margin-bottom: 20px;">يرجى ملء البيانات التالية للتحقق من أهلية حسابك.</p>
             
             <form id="submissionForm">
                 
@@ -50,15 +51,15 @@
 
                 <div id="statusMessage" class="status-message" style="display: none;"></div>
 
-                <button type="submit" id="submitBtn" class="btn-primary">إرسال الطلب</button>
+                <div style="text-align: center; margin-top: 30px;">
+                    <button type="submit" id="submitBtn" class="btn-primary">إرسال الطلب</button>
+                </div>
             </form>
-
         </div>
     </main>
 
     <div id="loadingOverlay" class="loading-overlay" style="display: none;">
-        <div class="loader"></div>
-        <p>جاري معالجة الطلب...</p>
+        <div class="loader"></div> <p>جاري معالجة الطلب...</p>
     </div>
 
     <footer>
