@@ -20,10 +20,10 @@ body {
     padding: 0 20px;
 }
 
-/* ================= الهيدر واللوجو (معدل ليكون مرتب) ================= */
+/* ================= الهيدر واللوجو (صغير ومرتب) ================= */
 header {
     background-color: #ffffff;
-    padding: 10px 0; /* مسافة رأسية صغيرة وأنيقة */
+    padding: 10px 0;
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
     position: sticky;
     top: 0;
@@ -37,14 +37,14 @@ header .container {
 }
 
 .logo {
-    width: 45px; /* الحجم الصغير والمرتب */
+    width: 45px; /* حجم صغير ومناسب جداً */
     height: auto;
     display: block;
 }
 
-/* ================= قسم البطل (Hero Section) ================= */
+/* ================= قسم البطل (Hero) ================= */
 .hero {
-    background: linear-gradient(135deg, #FFFC00, #FFE500); /* تدرج أصفر سناب */
+    background: linear-gradient(135deg, #FFFC00, #FFE500); /* أصفر سناب */
     padding: 80px 0;
     text-align: center;
     color: #333;
@@ -66,12 +66,12 @@ header .container {
     margin-right: auto;
 }
 
-/* ================= تنسيق الفيديو ================= */
+/* ================= الفيديو ================= */
 .video-container {
     max-width: 800px;
     margin: 40px auto;
     position: relative;
-    padding-bottom: 56.25%; /* 16:9 */
+    padding-bottom: 56.25%;
     height: 0;
     overflow: hidden;
     border-radius: 15px;
@@ -96,7 +96,7 @@ button, .btn-primary {
     font-weight: bold;
     border-radius: 50px;
     cursor: pointer;
-    transition: transform 0.2s ease;
+    transition: transform 0.2s ease, opacity 0.2s;
     box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
     margin-top: 20px;
     display: inline-block;
@@ -106,6 +106,15 @@ button, .btn-primary {
 button:hover, .btn-primary:hover {
     background-color: #000;
     transform: translateY(-3px);
+}
+
+/* شكل الزر عند الانتظار (Disabled) */
+button:disabled {
+    background-color: #333;
+    color: #ccc;
+    cursor: wait; /* مؤشر الانتظار */
+    transform: none;
+    opacity: 0.8;
 }
 
 .secondary-text {
@@ -144,12 +153,10 @@ button:hover, .btn-primary:hover {
 }
 
 .feature-item:hover { transform: translateY(-5px); }
-
 .feature-item img { width: 50px; height: 50px; margin-bottom: 20px; }
-
 .feature-item h3 { font-size: 1.4rem; color: #333; margin-bottom: 10px; font-weight: 700; }
 
-/* ================= نموذج التقديم (Form) ================= */
+/* ================= النموذج (Form) ================= */
 .form-wrapper {
     background-color: #ffffff;
     max-width: 500px;
@@ -162,11 +169,7 @@ button:hover, .btn-primary:hover {
 .form-wrapper h2 { text-align: center; margin-bottom: 20px; color: #1a1a1a; }
 
 .form-group { margin-bottom: 20px; text-align: right; }
-
-.form-group label {
-    display: block; margin-bottom: 8px; font-weight: 700; color: #444; font-size: 0.95rem;
-}
-
+.form-group label { display: block; margin-bottom: 8px; font-weight: 700; color: #444; font-size: 0.95rem; }
 .form-group input {
     width: 100%; padding: 12px 15px;
     border: 1px solid #ddd;
@@ -175,7 +178,6 @@ button:hover, .btn-primary:hover {
     background-color: #fafafa;
     transition: 0.3s;
 }
-
 .form-group input:focus {
     border-color: #FFFC00; outline: none; background-color: #fff;
     box-shadow: 0 0 0 3px rgba(255, 252, 0, 0.2);
@@ -210,9 +212,4 @@ footer {
     text-align: center;
     padding: 25px 0;
     margin-top: auto;
-}
-
-@media (max-width: 768px) {
-    .hero h1 { font-size: 2rem; }
-    .hero button { padding: 15px 40px; font-size: 1.1rem; }
 }
